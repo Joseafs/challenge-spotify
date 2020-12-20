@@ -2,11 +2,15 @@ import React, { Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { wrapper } from '../store'
 
-import { ThemeProvider } from '@material-ui/core/styles'
+import { MuiThemeProvider, NoSsr } from '@material-ui/core'
+import { ThemeProvider } from 'styled-components'
+
 import CssBaseline from '@material-ui/core/CssBaseline'
 
-import theme from '../theme'
+import Authentication from '../components/authentication'
+
 import '../theme/globals.css'
+import theme from '../theme'
 
 function MyApp(props) {
   const { Component, pageProps } = props
@@ -20,10 +24,14 @@ function MyApp(props) {
 
   return (
     <Fragment>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <NoSsr />
+      <MuiThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Authentication />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </MuiThemeProvider>
     </Fragment>
   )
 }

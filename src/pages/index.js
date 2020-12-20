@@ -1,30 +1,28 @@
-import { useEffect, useLayoutEffect } from 'react'
-import Head from 'next/head'
+import { memo, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
-import { getWithExpiry } from '../store/localstorage'
+import { useDispatch, useSelector } from 'react-redux'
 import { getAlbumsAction } from '../store/actions'
+import Layout from '../components/layout'
 
-export default function Home() {
+function Home() {
   const router = useRouter()
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const tokenValid = getWithExpiry('a-token')
-
-    if (!tokenValid) router.push('/login')
-
     dispatch(getAlbumsAction())
-
-    console.log('Token:', tokenValid)
   }, [])
 
+  const listAlbums = useSelector((state) => state.albums.list)
+
+  useEffect(() => {
+    console.log(listAlbums)
+  }, [listAlbums])
+
   return (
-    <div>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-    </div>
+    <Layout title="Pesquise no Spotify !">
+      <div>dsadasdsa</div>
+    </Layout>
   )
 }
+
+export default memo(Home)

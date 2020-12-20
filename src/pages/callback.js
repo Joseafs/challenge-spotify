@@ -7,7 +7,7 @@ export default function Callback() {
 
   useEffect(() => {
     const params = router.asPath.split('&')
-    const expires = params[2].split('=')[1]
+    const expires = parseInt(params[2].split('=')[1])
     const token = params[0].split('=')[1]
 
     setWithExpiry('a-token', token, expires)
