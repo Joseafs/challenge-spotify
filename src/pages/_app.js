@@ -1,12 +1,14 @@
 import React, { Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { wrapper } from '../store'
+
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 import theme from '../theme'
 import '../theme/globals.css'
 
-export default function MyApp(props) {
+function MyApp(props) {
   const { Component, pageProps } = props
 
   useEffect(() => {
@@ -30,3 +32,5 @@ MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
   pageProps: PropTypes.object.isRequired,
 }
+
+export default wrapper.withRedux(MyApp)
