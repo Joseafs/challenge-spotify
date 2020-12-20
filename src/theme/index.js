@@ -12,6 +12,9 @@ const theme = createMuiTheme({
       default: '#212121',
     },
   },
+  typography: {
+    fontFamily: 'Roboto',
+  },
 })
 
 export default theme
