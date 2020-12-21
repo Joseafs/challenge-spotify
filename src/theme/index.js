@@ -3,15 +3,17 @@ import { createMuiTheme } from '@material-ui/core/styles'
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#999',
+      main: '#fafafa',
     },
     secondary: {
-      main: '#333',
+      main: '#999',
     },
     background: {
       default: '#212121',
     },
+    type: 'dark',
   },
+  shape: { borderRadius: 0 },
   typography: {
     fontFamily: 'Roboto',
   },

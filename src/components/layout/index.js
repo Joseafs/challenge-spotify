@@ -7,7 +7,7 @@ function Layout({ aside, title = '', children }) {
   return (
     <Root>
       <Head>
-        <link rel="icon" href="/favicon.svg" />
+        <link rel="icon" href="/logo.svg" />
 
         <title>{title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -17,7 +17,6 @@ function Layout({ aside, title = '', children }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="#191414" />
       </Head>
       {aside}
-      <Aside>dsadsadsa</Aside>
       <Article>
         <Content>{children}</Content>
       </Article>
@@ -26,7 +25,7 @@ function Layout({ aside, title = '', children }) {
 }
 
 Layout.propTypes = {
-  aside: PropTypes.elementType,
+  aside: PropTypes.node,
   children: PropTypes.node.isRequired,
 }
 
