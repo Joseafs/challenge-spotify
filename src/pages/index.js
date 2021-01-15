@@ -10,6 +10,7 @@ import { InputSearch } from '../components/input'
 import { Title } from '../components/text'
 import { ListHorizontal } from '../components/list'
 import Album from '../components/album'
+import { Divider } from '@material-ui/core'
 
 const infoList = (list) =>
   list.map((item) => {
@@ -36,8 +37,9 @@ const infoList = (list) =>
 function Home() {
   const dispatch = useDispatch()
 
-  const listAlbums = useSelector((state) => state.albums.list)
-  const searchText = useSelector((state) => state.albums.search)
+  const listAlbums = useSelector((state) => state.albums.search.list)
+  const searchedResults = useSelector((state) => state.albums.searchedResults)
+  const searchText = useSelector((state) => state.albums.search.text)
 
   useEffect(() => {
     console.log(listAlbums)
@@ -80,6 +82,30 @@ function Home() {
           <Title text="Nenhum resultado registrado" type="body1" />
         )}
       </LineContainer>
+      {searchedResults.length
+        ? searchedResults.map(({ text, list }) => (
+            <LineContainer mgny={2}>
+              {list.length > 0 ? (
+                <>
+                  <Title
+                    text={`Resultados encontrados para "${text}"`}
+                    align="left"
+                  />
+                  <ListHorizontal
+                    space={2}
+                    list={infoList(list)}
+                    align="space-between"
+                  />
+                </>
+              ) : (
+                <Title
+                  text={`Nenhum resultado para: "${searchText}"`}
+                  align="left"
+                />
+              )}
+            </LineContainer>
+          ))
+        : null}
     </Layout>
   )
 }

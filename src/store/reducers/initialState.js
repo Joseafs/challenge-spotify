@@ -1,7 +1,7 @@
 export default {
   album: {
-    search: '',
-    list: [],
+    search: { text: '', list: [] },
+    searchedResults: [],
   },
   tracks: {
     title: '',

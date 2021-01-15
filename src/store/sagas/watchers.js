@@ -7,7 +7,7 @@ export function* watchGetAlbums() {
   yield takeLatest(types.GET_ALBUMS_RQ, getAlbumsSaga)
 }
 
-// Search
+// SEARCH
 export function* watchGetSearch() {
   yield takeLatest(types.GET_SEARCH_RQ, getSearchSaga)
 }
