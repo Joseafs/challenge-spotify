@@ -1,7 +1,7 @@
 import { fork, all } from 'redux-saga/effects'
-import { watchGetAlbums, watchGetSearch } from './watchers'
+import { watchGetAlbum, watchGetSearchAlbum } from './watchers'
 
 export default function* rootSaga() {
-  yield all([fork(watchGetAlbums)])
-  yield all([fork(watchGetSearch)])
+  yield all([fork(watchGetAlbum)])
+  yield all([fork(watchGetSearchAlbum)])
 }

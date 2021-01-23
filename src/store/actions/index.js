@@ -1,10 +1,11 @@
 import * as types from './actionTypes'
 
-export const getAlbumsAction = () => ({
-  type: types.GET_ALBUMS_RQ,
+export const getAlbumAction = (id) => ({
+  type: types.GET_ALBUM_RQ,
+  id,
 })
 
-export const getSearchAction = (search) => ({
-  type: types.GET_SEARCH_RQ,
+export const getSearchAlbumsAction = (search) => ({
+  type: types.GET_SEARCH_ALBUMS_RQ,
   search,
 })

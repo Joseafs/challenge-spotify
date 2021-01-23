@@ -1,9 +1,11 @@
-import { getWithExpiry } from '../localstorage'
+import { getWithExpiry } from '../localstorage';
 
-export const getAlbums = () => {
-  const tokenValid = getWithExpiry('a-token')
+export const getAlbum = (id) => {
+  const tokenValid = getWithExpiry('a-token');
 
-  return fetch('https://api.spotify.com/v1/me/player/recently-played', {
+  console.log('res oq');
+
+  return fetch(`https://api.spotify.com/v1/albums/${id}`, {
     credentials: 'same-origin',
     headers: {
       Authorization: 'Bearer ' + tokenValid,
@@ -11,17 +13,17 @@ export const getAlbums = () => {
   })
     .then((response) => {
       if (response.ok) {
-        return response.json()
+        return response.json();
       }
-      return { error: response.statusText }
+      return { error: response.statusText };
     })
     .catch((err) => {
-      return { error: err.message }
-    })
-}
+      return { error: err.message };
+    });
+};
 
-export const getSearch = (search) => {
-  const tokenValid = getWithExpiry('a-token')
+export const getSearchAlbums = (search) => {
+  const tokenValid = getWithExpiry('a-token');
 
   return fetch(
     `https://api.spotify.com/v1/search?q=${search}&type=track,artist,album&limit=5`,
@@ -34,11 +36,11 @@ export const getSearch = (search) => {
   )
     .then((response) => {
       if (response.ok) {
-        return response.json()
+        return response.json();
       }
-      return { error: response.statusText }
+      return { error: response.statusText };
     })
     .catch((err) => {
-      return { error: err.message }
-    })
-}
+      return { error: err.message };
+    });
+};

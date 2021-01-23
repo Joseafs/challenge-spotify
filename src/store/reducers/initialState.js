@@ -3,6 +3,10 @@ export default {
     search: { text: '', list: [] },
     searchedResults: [],
   },
+  albumView: {
+    info: { title: '', artist: '', image: '' },
+    tacks: [],
+  },
   tracks: {
     title: '',
     description: '',
